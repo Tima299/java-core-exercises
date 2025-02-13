@@ -98,6 +98,80 @@ public class If {
                     int c = sc.nextInt();
                     System.out.println("Min = " + If12(a, b, c));
                 }
+                case 13 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    System.out.println("Middle number = " + If13(a, b, c));
+                }
+                case 14 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    If14(a, b, c);
+                }
+                case 15 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    System.out.println(If15(a, b, c));
+                }
+                case 16 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    If16(a, b, c);
+                }
+                case 17 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    If17(a, b, c);
+                }
+                case 18 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    If18(a, b, c);
+                }
+                case 19 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    System.out.println("Enter d number: ");
+                    int d = sc.nextInt();
+                    If19(a, b, c, d);
+                }
+                case 20 -> {
+                    System.out.println("Enter a number: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b number: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c number: ");
+                    int c = sc.nextInt();
+                    If20(a, b, c);
+                }
                 default -> {
                     System.out.println("There is no such kinda exercise, please retry!");
                 }
@@ -198,33 +272,86 @@ public class If {
     }
 
     public static int If12(int a, int b, int c) {
-        return Math.min(a, Math.min(c, b));
+        int min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+        return min;
     }
 
     public static int If13(int a, int b, int c) {
-        int max, min, mid;
-        if (a > b) {
-            if (a > c) {
-                max = a;
-                mid = b > c ? b : c;
-                min = b < c ? b : c;
-            } else {
-                max = c;
-                mid = a;
-                min = b;
-            }
+        if ((a > b && a < c) || (a > c && a < b)) return a;
+        if ((b > a && b < c) || (b > c && b < a)) return b;
+        return c;
+    }
+
+    public static void If14(int a, int b, int c) {
+        int min, max;
+        if (a < b) {
+            if (a < c) min = a;
+            else min = c;
         } else {
-            if (b > c) {
-                max = b;
-                mid = (a > c) ? a : c;
-                min = (a < c) ? a : c;
-            } else {
-                max = c;
-                mid = b;
-                min = a;
-            }
+            if (b < c) min = b;
+            else min = c;
         }
-        return mid;
+        if (a > b) {
+            if (a > c) max = a;
+            else max = c;
+        } else {
+            if (b > c) max = b;
+            else max = c;
+        }
+        System.out.println("Min = " + min + ", Max = " + max);
+    }
+
+    public static int If15(int a, int b, int c) {
+        if (a < b && a < c) return b + c;
+        if (b < a && b < c) return a + c;
+        return b + a;
+    }
+
+    public static void If16(int a, int b, int c) {
+        if (a < b && b < c) {
+            int sum = 2 * (a + b + c);
+            System.out.println("Sum is " + sum);
+        } else {
+            a *= -1;
+            b *= -1;
+            c *= -1;
+            System.out.println("a = " + a + ", b  = " + b + ", c = " + c);
+        }
+    }
+
+    public static void If17(int a, int b, int c) {
+        if (a < b && b < c || a > b && b > c) {
+            int sum = 2 * (a + b + c);
+            System.out.println("Sum is " + sum);
+        } else {
+            a *= -1;
+            b *= -1;
+            c *= -1;
+            System.out.println("a = " + a + ", b  = " + b + ", c = " + c);
+        }
+    }
+
+    public static void If18(int a, int b, int c) {
+        if (a == b) System.out.println(3);
+        else if (b == c) System.out.println(1);
+        else System.out.println(2);
+    }
+
+    public static void If19(int a, int b, int c, int d) {
+        if (a == b && b == c) {
+            System.out.println(4);
+        } else if (b == c && c == d) {
+            System.out.println(1);
+        } else if (a == c && c == d) {
+            System.out.println(2);
+        } else {
+            System.out.println(3);
+        }
+    }
+    public static void If20(int a, int b, int c){
+        if(Math.abs(a-b) < Math.abs(a-c)) System.out.println(" b is closer");
+        else System.out.println(" c is closer");
     }
 }
-
