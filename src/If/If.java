@@ -172,10 +172,71 @@ public class If {
                     int c = sc.nextInt();
                     If20(a, b, c);
                 }
+                case 21 -> {
+                    System.out.println("Enter x number: ");
+                    int x = sc.nextInt();
+                    System.out.println("Enter y number: ");
+                    int y = sc.nextInt();
+                    System.out.println("Result = " + If21(x, y));
+                }
+                case 22 -> {
+                    System.out.println("Enter x number: ");
+                    int x = sc.nextInt();
+                    System.out.println("Enter y number: ");
+                    int y = sc.nextInt();
+                    System.out.println("Result = " + If22(x, y));
+                }
+                case 23 -> {
+                    System.out.println("Enter x1, y1: ");
+                    int x1 = sc.nextInt(), y1 = sc.nextInt();
+                    System.out.println("Enter x2, y2: ");
+                    int x2 = sc.nextInt(), y2 = sc.nextInt();
+                    System.out.println("Enter x3, y3: ");
+                    int x3 = sc.nextInt(), y3 = sc.nextInt();
+
+                    If23(x1, y1, x2, y2, x3, y3);
+                }
+                case 24 -> {
+                    System.out.println("Enter x: ");
+                    double x = sc.nextInt();
+                    If24(x);
+                }
+                case 25 -> {
+                    System.out.println("Enter x: ");
+                    int x = sc.nextInt();
+                    If25(x);
+                }
+                case 26 -> {
+                    System.out.println("Enter x: ");
+                    double x = sc.nextDouble();
+                    If26(x);
+                }
+                case 27 -> {
+                    System.out.println("Enter x: ");
+                    double x = sc.nextDouble();
+                    System.out.println("Result = " + If27(x));
+                }
+                case 28 -> {
+                    System.out.println("Enter year: ");
+                    int year = sc.nextInt();
+                    System.out.println("Days in the year: " + If28(year));
+                }
+                case 29 -> {
+                    System.out.println("Enter an integer: ");
+                    int x = sc.nextInt();
+                    If29(x);
+                }
+                case 30 -> {
+                    System.out.println("Enter a number (1-999): ");
+                    int x = sc.nextInt();
+                    If30(x);
+                }
+
                 default -> {
                     System.out.println("There is no such kinda exercise, please retry!");
                 }
             }
+            ;
         }
     }
 
@@ -350,8 +411,106 @@ public class If {
             System.out.println(3);
         }
     }
-    public static void If20(int a, int b, int c){
-        if(Math.abs(a-b) < Math.abs(a-c)) System.out.println(" b is closer");
+
+    public static void If20(int a, int b, int c) {
+        if (Math.abs(a - b) < Math.abs(a - c)) System.out.println(" b is closer");
         else System.out.println(" c is closer");
     }
+
+    public static int If21(int x, int y) {
+        if (x == 0 && y == 0) return 0;
+        else if (x == 0 || y == 0) return 1;
+        else return 2;
+    }
+
+    public static int If22(int x, int y) {
+        if (x > 0 && y > 0) return 1;
+        if (x < 0 && y > 0) return 2;
+        if (x < 0 && y < 0) return 3;
+        return 4;
+    }
+
+    public static void If23(int x1, int y1, int x2, int y2, int x3, int y3) {
+
+        int x4, y4;
+        if (x1 == x2) x4 = x3;
+        else if (x1 == x3) x4 = x2;
+        else x4 = x1;
+
+        if (y1 == y2) y4 = y3;
+        else if (y1 == y3) y4 = y2;
+        else y4 = y1;
+
+        System.out.println("x4 = " + x4 + ", y4 = " + y4);
+    }
+
+    public static void If24(double x) {
+        double result = 0;
+        if (x > 0) {
+            result = (int) (2 * Math.sin(x));
+        } else {
+            result = 6 - x;
+        }
+        System.out.println("Result = " + result);
+    }
+
+    public static void If25(int x) {
+        int result = 0;
+        if (x < -2 || x > 2) {
+            result = 2 * x;
+        } else {
+            result = -3 * x;
+        }
+        System.out.println("Result = " + result);
+    }
+
+    public static void If26(double x) {
+        double result;
+        if (x <= 0) {
+            result = -x;
+        } else if (x < 2) {
+            result = x * x;
+        } else {
+            result = 4;
+        }
+        System.out.println("Result = " + result);
+    }
+
+    public static int If27(double x) {
+        if (x < 0) return 0;
+        else if ((int) x % 2 == 0) return 1;
+        else return -1;
+    }
+
+    public static int If28(int year) {
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) return 366;
+        else return 365;
+    }
+
+    public static void If29(int x) {
+        String result;
+        if (x == 0) {
+            result = "zero number";
+        } else if (x > 0) {
+            if (x % 2 == 0) result = "positive even number";
+            else result = "positive odd number";
+        } else {
+            if (x % 2 == 0) result = "negative even number";
+            else result = "negative odd number";
+        }
+        System.out.println(result);
+    }
+
+    public static void If30(int x) {
+        String result;
+        if (x >= 1 && x <= 9) {
+            result = "one-digit " + (x % 2 == 0 ? "even" : "odd") + " number";
+        } else if (x >= 10 && x <= 99) {
+            result = "two-digit " + (x % 2 == 0 ? "even" : "odd") + " number";
+        } else {
+            result = "three-digit " + (x % 2 == 0 ? "even" : "odd") + " number";
+        }
+        System.out.println(result);
+    }
+
 }
