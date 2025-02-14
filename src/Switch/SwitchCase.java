@@ -64,6 +64,33 @@ public class SwitchCase {
                     int m = sc.nextInt();
                     Case8(d, m);
                 }
+                case 9 -> {
+                    System.out.println("Enter day: ");
+                    int d = sc.nextInt();
+                    System.out.println("Enter month: ");
+                    int m = sc.nextInt();
+                    Case9(d, m);
+                }
+                case 10 -> {
+                    System.out.println("Enter initial direction (N, W, S, E): ");
+                    char c = sc.next().charAt(0);
+                    System.out.println("Enter command (0, 1, -1): ");
+                    int n = sc.nextInt();
+                    Case10(c, n);
+                }
+                case 11 -> {
+                    System.out.println("Enter initial direction (N, W, S, E) and two instructions (1, -1, 2): ");
+                    char c = sc.next().charAt(0);
+                    int n1 = sc.nextInt();
+                    int n2 = sc.nextInt();
+                    Case11(c, n1, n2);
+                }
+                case 12 -> {
+                    System.out.println("Enter element number (1-4) and its value: ");
+                    int elem = sc.nextInt();
+                    double value = sc.nextDouble();
+                    Case12(elem, value);
+                }
                 default -> {
                     System.out.println("There is no such kinda exercise, please retry!");
                 }
@@ -161,5 +188,148 @@ public class SwitchCase {
         }
         System.out.println("Previous Date: " + d + "d  " + m+"m");
     }
+    public static void Case9(int d, int m) {
+        int nextD, nextM;
+        switch (m) {
+            case 1, 3, 5, 7, 8, 10 -> {
+                if (d == 31) {
+                    nextD = 1;
+                    nextM = m + 1;
+                } else {
+                    nextD = d + 1;
+                    nextM = m;
+                }
+            }
+            case 4, 6, 9, 11 -> {
+                if (d == 30) {
+                    nextD = 1;
+                    nextM = m + 1;
+                } else {
+                    nextD = d + 1;
+                    nextM = m;
+                }
+            }
+            case 12 -> {
+                if (d == 31) {
+                    nextD = 1;
+                    nextM = 1;
+                } else {
+                    nextD = d + 1;
+                    nextM = m;
+                }
+            }
+            case 2 -> {
+                if (d == 28) {
+                    nextD = 1;
+                    nextM = 3;
+                } else {
+                    nextD = d + 1;
+                    nextM = m;
+                }
+            }
+            default -> {
+                System.out.println("Invalid date");
+                return;
+            }
+        }
+        System.out.println("Next date: " + nextD + "/" + nextM);
+    }
+
+    public static void Case10(char c, int n) {
+        switch (n) {
+            case 0 -> System.out.println("Direction: " + c);
+            case 1 -> System.out.println("Direction: " + turnLeft(c));
+            case -1 -> System.out.println("Direction: " + turnRight(c));
+            default -> System.out.println("Invalid command");
+        }
+    }
+
+    public static char turnLeft(char c) {
+        return switch (c) {
+            case 'N' -> 'W';
+            case 'W' -> 'S';
+            case 'S' -> 'E';
+            case 'E' -> 'N';
+            default -> 'X';
+        };
+    }
+
+    public static char turnRight(char c) {
+        return switch (c) {
+            case 'N' -> 'E';
+            case 'E' -> 'S';
+            case 'S' -> 'W';
+            case 'W' -> 'N';
+            default -> 'X';
+        };
+    }
+    public static void Case11(char C, int N1, int N2) {
+        for (int i = 0; i < 2; i++) {
+            int N = (i == 0) ? N1 : N2;
+            switch (N) {
+                case 1 -> {
+                    switch (C) {
+                        case 'N' -> C = 'W';
+                        case 'W' -> C = 'S';
+                        case 'S' -> C = 'E';
+                        case 'E' -> C = 'N';
+                    }
+                }
+                case -1 -> {
+                    switch (C) {
+                        case 'N' -> C = 'E';
+                        case 'E' -> C = 'S';
+                        case 'S' -> C = 'W';
+                        case 'W' -> C = 'N';
+                    }
+                }
+                case 2 -> {
+                    switch (C) {
+                        case 'N' -> C = 'S';
+                        case 'S' -> C = 'N';
+                        case 'E' -> C = 'W';
+                        case 'W' -> C = 'E';
+                    }
+                }
+            }
+        }
+        System.out.println("Direction: " + C);
+    }
+
+    public static void Case12(int n, double val) {
+        double r = 0, d = 0, l = 0, s = 0;
+        switch (n) {
+            case 1 -> {
+                r = val;
+                d = 2 * r;
+                l = 2 * 3.14 * r;
+                s = 3.14 * r * r;
+            }
+            case 2 -> {
+                d = val;
+                r = d / 2;
+                l = 2 * 3.14 * r;
+                s = 3.14 * r * r;
+            }
+            case 3 -> {
+                l = val;
+                r = l / (2 * 3.14);
+                d = 2 * r;
+                s = 3.14 * r * r;
+            }
+            case 4 -> {
+                s = val;
+                r = Math.sqrt(s / 3.14);
+                d = 2 * r;
+                l = 2 * 3.14 * r;
+            }
+        }
+        System.out.println("Radius: " + r);
+        System.out.println("Diameter: " + d);
+        System.out.println("Length: " + l);
+        System.out.println("Area: " + s);
+    }
+
 }
+
 
