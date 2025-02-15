@@ -1,5 +1,6 @@
 package Switch;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class SwitchCase {
@@ -91,6 +92,12 @@ public class SwitchCase {
                     double value = sc.nextDouble();
                     Case12(elem, value);
                 }
+                case 13 -> {
+                    System.out.println("Enter n, double value");
+                    int n = sc.nextInt();
+                    double value = sc.nextDouble();
+                    Case13(n, value);
+                }
                 default -> {
                     System.out.println("There is no such kinda exercise, please retry!");
                 }
@@ -178,16 +185,29 @@ public class SwitchCase {
         switch (d) {
             case 1 -> {
                 switch (m) {
-                    case 1 -> { m = 12; d = 31; }
-                    case 3 -> { m--; d = 28; }
-                    case 5, 7, 10, 12 -> { m--; d = 30; }
-                    default -> { m--; d = 31; }
+                    case 1 -> {
+                        m = 12;
+                        d = 31;
+                    }
+                    case 3 -> {
+                        m--;
+                        d = 28;
+                    }
+                    case 5, 7, 10, 12 -> {
+                        m--;
+                        d = 30;
+                    }
+                    default -> {
+                        m--;
+                        d = 31;
+                    }
                 }
             }
             default -> d--;
         }
-        System.out.println("Previous Date: " + d + "d  " + m+"m");
+        System.out.println("Previous Date: " + d + "d  " + m + "m");
     }
+
     public static void Case9(int d, int m) {
         int nextD, nextM;
         switch (m) {
@@ -263,6 +283,7 @@ public class SwitchCase {
             default -> 'X';
         };
     }
+
     public static void Case11(char C, int N1, int N2) {
         for (int i = 0; i < 2; i++) {
             int N = (i == 0) ? N1 : N2;
@@ -330,6 +351,111 @@ public class SwitchCase {
         System.out.println("Area: " + s);
     }
 
+    public static void Case13(int n, double value) {
+        double a = 0, c = 0, h = 0, S = 0;
+        switch (n) {
+            case 1 -> {
+                a = value;
+                c = a * Math.sqrt(2);
+                h = c / 2;
+                S = (c * h) / 2;
+            }
+            case 2 -> {
+                c = value;
+                a = c / Math.sqrt(2);
+                h = c / 2;
+                S = (c * h) / 2;
+            }
+            case 3 -> {
+                h = value;
+                c = 2 * h;
+                a = (c / Math.sqrt(2));
+                S = (c * h) / 2;
+            }
+            case 4 -> {
+                S = value;
+                c = Math.sqrt(4 * S);
+                h = c / 2;
+                a = c / Math.sqrt(2);
+            }
+            default -> {
+                System.out.println("Invalid input.");
+                return;
+            }
+        }
+        System.out.printf("1: a = %.2f%n2: c = %.2f%n3: h = %.2f%n4: S = %.2f%n", a, c, h, S);
+    }
+
+    public static void Case14(int n, double value) {
+        double a = 0, R1 = 0, R2 = 0, S = 0;
+        switch (n) {
+            case 1 -> {
+                a = value;
+                R1 = a * Math.sqrt(3) / 6;
+                R2 = 2 * R1;
+                S = a * a * Math.sqrt(3) / 4;
+            }
+            case 2 -> {
+                R1 = value;
+                a = R1 * 6 / Math.sqrt(3);
+                R2 = 2 * R1;
+                S = a * a * Math.sqrt(3) / 4;
+            }
+            case 3 -> {
+                R2 = value;
+                R1 = R2 / 2;
+                a = R1 * 6 / Math.sqrt(3);
+                S = a * a * Math.sqrt(3) / 4;
+            }
+            case 4 -> {
+                S = value;
+                a = Math.sqrt(4 * S / Math.sqrt(3));
+                R1 = a * Math.sqrt(3) / 6;
+                R2 = 2 * R1;
+            }
+        }
+        System.out.printf("1: a = %.2f\n2: R1 = %.2f\n3: R2 = %.2f\n4: S = %.2f\n", a, R1, R2, S);
+    }
+
+    public static void Case15(int N, int M) {
+        String[] values = {"six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"};
+        String[] suits = {"spades", "clubs", "diamonds", "hearts"};
+        System.out.println(values[N - 6] + " of " + suits[M - 1]);
+    }
+
+    public static void Case16(int age) {
+        String[] tens = {"twenty", "thirty", "forty", "fifty", "sixty"};
+        String[] ones = {"", "-one", "-two", "-three", "-four", "-five", "-six", "-seven", "-eight", "-nine"};
+        System.out.println(tens[age / 10 - 2] + ones[age % 10] + " years");
+    }
+
+    public static void Case17(int task) {
+        String[] tens = {"tenth", "twentieth", "thirtieth"};
+        String[] ones = {"", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth"};
+        System.out.println("the " + (task % 10 == 0 ? tens[task / 10 - 1] : tens[task / 10 - 1].replace("ieth", "y-") + ones[task % 10]) + " task");
+    }
+
+    public static void Case18(int num) {
+        String[] hundreds = {"one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"};
+        String[] tens = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+        String[] ones = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+        System.out.println(hundreds[num / 100 - 1] + (num % 100 == 0 ? "" : num % 100 < 10 ? " and " + ones[num % 10] : num % 100 < 20 ? " and " + teens[num % 10] : " and " + tens[num % 100 / 10] + (num % 10 == 0 ? "" : "-" + ones[num % 10])));
+    }
+
+    public static void Case19(int year) {
+        String[] colors = {"green", "red", "yellow", "white", "black"};
+        String[] animals = {"rat", "cow", "tiger", "hare", "dragon", "snake", "horse", "sheep", "monkey", "hen", "dog", "pig"};
+        int cycle = (year - 1984) % 60;
+        System.out.println("The " + colors[(cycle / 12 + 5) % 5] + " " + animals[cycle % 12] + "'s year");
+    }
+
+    public static void Case20(int D, int M) {
+        String[] zodiac = {"Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius"};
+        int[] dates = {19, 18, 20, 19, 20, 21, 22, 22, 22, 22, 22, 21};
+        System.out.println(D > dates[M - 1] ? zodiac[M] : zodiac[M - 1]);
+    }
 }
+
 
 
