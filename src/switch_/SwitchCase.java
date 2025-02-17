@@ -1,6 +1,5 @@
-package Switch;
+package switch_;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class SwitchCase {

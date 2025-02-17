@@ -1,4 +1,4 @@
-package If;
+package if_;
 
 import java.util.Scanner;
 

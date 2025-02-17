@@ -1,4 +1,4 @@
-package Boolean;
+package boolean_;
 import java.util.Scanner;
 
 public class Boolean {
