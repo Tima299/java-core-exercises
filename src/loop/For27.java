@@ -21,3 +21,4 @@ public class For27 {
         System.out.println(sum);
     }
 }
+
