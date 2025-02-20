@@ -4,14 +4,6 @@
 
 Welcome to the Java Core Exercises repository! 🎯 This project is crafted to help you master core Java programming concepts through a variety of challenging exercises. Whether you're a beginner sharpening your skills or an experienced developer revisiting the basics, this repository has something for you! 💡
 
-📂 Repository Structure
-
-📁 java-core-exercises/
-│── 📂 src/                # Source code for exercises
-│── 📂 .idea/              # IntelliJ IDEA settings
-│── 📄 .gitignore          # Ignored files list
-│── 📄 java-core-exercises.iml  # IntelliJ project descriptor
-
 🚀 Getting Started
 
 🔧 Prerequisites
