@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Array24 {
     public static void main(String[] args) {
-        int temp = 0;
         System.out.println("Enter the bound:");
         Scanner s = new Scanner(System.in);
         int N = s.nextInt();
