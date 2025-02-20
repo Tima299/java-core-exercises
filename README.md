@@ -1,5 +1,5 @@
 🚀 Java Core Exercises
-
+![Alt Text](https://4kwallpapers.com/images/wallpapers/java-logo-2560x1440-15990.png)
 📌 About
 
 Welcome to the Java Core Exercises repository! 🎯 This project is crafted to help you master core Java programming concepts through a variety of challenging exercises. Whether you're a beginner sharpening your skills or an experienced developer revisiting the basics, this repository has something for you! 💡
