@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Array6 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size: ");
         int N = sc.nextInt(), A = sc.nextInt(), B = sc.nextInt();
         int[] arr = new int[N];
         arr[0] = A;
