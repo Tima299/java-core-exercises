@@ -1,0 +1,55 @@
+package matrix;
+
+import java.util.Scanner;
+
+public class Matrix40 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter M");
+        int M = sc.nextInt();
+        System.out.println("Enter N");
+        int N = sc.nextInt();
+
+        int[][] arr = new int[M][N];
+
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                arr[i][j] = (int) (Math.random() * 10);
+            }
+        }
+
+        System.out.println("Generated Matrix");
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
+        System.out.println("\nExpected");
+
+        int lastRowIndex = -1;
+        int maxCount = 0;
+
+        for (int i = 0; i < M; i++) {
+            int[] freq = new int[10];
+            for (int j = 0; j < N; j++) {
+                freq[arr[i][j]]++;
+            }
+            int mostRepeated = 0;
+            for (int j = 0; j < 10; j++) {
+                if (freq[j] > mostRepeated) {
+                    mostRepeated = freq[j];
+                }
+            }
+            if (mostRepeated > maxCount) {
+                maxCount = mostRepeated;
+                lastRowIndex = i + 1;
+            } else if (mostRepeated == maxCount) {
+                lastRowIndex = i + 1;
+            }
+        }
+
+        System.out.println("Last row index with the most repeated elements: " + (lastRowIndex != -1 ? lastRowIndex : 0));
+    }
+}
