@@ -6,8 +6,6 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class Main {
-    private static final String API_KEY = "";
-    private static final String API_URL = "";
     private static final int MAX_RETRIES = 3;
     private static final int RETRY_DELAY = 3000;
 
