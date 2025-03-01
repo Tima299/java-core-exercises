@@ -1,9 +1,10 @@
-package revision;
+package revision_;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main5 {
+public class Main3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
@@ -14,7 +15,7 @@ public class Main5 {
         int[][] array = new int[M][N];
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
-                array[i][j] = rand.nextInt(100);
+                array[i][j] = rand.nextInt(10);
             }
         }
         System.out.println("Generated Array: ");
@@ -24,15 +25,25 @@ public class Main5 {
             }
             System.out.println();
         }
-        StringBuilder sb = new StringBuilder();
+
+        System.out.println("Solution: ");
+        int[] arr = new int[N];
         for (int j = 0; j < N; j++) {
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
             for (int i = 0; i < M; i++) {
-                if (!((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0))) {
-                    sb.append(array[i][j]).append(" ");
+                if (min > array[i][j]) {
+                    min = array[i][j];
+                }
+                if (max < array[i][j]) {
+                    max = array[i][j];
                 }
             }
+            int diff = max - min;
+            arr[j] = diff;
+            System.out.println("Column = " + j + ", Max = " + max + ", Min = " + min + ", diff = " + diff);
         }
-        System.out.println("Result: ");
-        System.out.println(sb);
+        System.out.println("Asked 1D array: ");
+        System.out.println(Arrays.toString(arr));
     }
 }
