@@ -37,7 +37,6 @@ public class Main {
             try {
                 HttpURLConnection connection = createConnection();
                 sendRequest(connection, userMessage);
-
                 int responseCode = connection.getResponseCode();
                 if (responseCode == 200) {
                     return readResponse(connection);
@@ -58,18 +57,17 @@ public class Main {
     }
 
     private static HttpURLConnection createConnection() throws Exception {
-        URL url = new URL(API_URL);
+        URL url = new URL(System.getenv("API_URL"));
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Authorization", "Bearer " + API_KEY);
+        connection.setRequestProperty("Authorization", "Bearer " + System.getenv("API_KEY"));
         connection.setDoOutput(true);
         return connection;
     }
 
     private static void sendRequest(HttpURLConnection connection, String userMessage) throws Exception {
         String payload = "{ \"inputs\": \"" + userMessage + "\" }";
-
         try (OutputStream os = connection.getOutputStream()) {
             os.write(payload.getBytes());
             os.flush();
@@ -78,13 +76,11 @@ public class Main {
 
     private static String readResponse(HttpURLConnection connection) throws Exception {
         StringBuilder response = new StringBuilder();
-
         try (Scanner scanner = new Scanner(connection.getInputStream())) {
             while (scanner.hasNextLine()) {
                 response.append(scanner.nextLine());
             }
         }
-
         return response.toString();
     }
 }
